@@ -1,21 +1,19 @@
 var fs = require('hexo-fs');
 var fm = require('hexo-front-matter');
 
-function absolute_path_reference_url(url) {
+var absolute_path_reference_url = function(url) {
 	url = new URL(url);
 	return url.pathname + url.search + url.hash;
-}
+};
 
 var contentJsonPath = hexo.public_dir + 'content.json';
 var post_asset_folder = hexo.config.post_asset_folder;
 var imagesPath = hexo.config.url + hexo.config.root;
 var config = hexo.config.hasOwnProperty('featured_image')
-  ? hexo.config.featured_image
-	: {} ;
+	? hexo.config.featured_image
+	: {};
 // https://tools.ietf.org/html/rfc3986#section-4.2
-var useAbsolutePathReference = config.hasOwnProperty('absolute_path_reference')
-	? config.absolute_path_reference
-	: false;
+var useAbsolutePathReference = config.absolute_path_reference;
 if (useAbsolutePathReference) {
 	imagesPath = absolute_path_reference_url(imagesPath);
 }
