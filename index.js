@@ -1,9 +1,24 @@
 var fs = require('hexo-fs');
 var fm = require('hexo-front-matter');
 
+function absolute_path_reference_url(url) {
+	url = new URL(url);
+	return url.pathname + url.search + url.hash;
+}
+
 var contentJsonPath = hexo.public_dir + 'content.json';
 var post_asset_folder = hexo.config.post_asset_folder;
 var imagesPath = hexo.config.url + hexo.config.root;
+var config = hexo.config.hasOwnProperty('featured_image')
+  ? hexo.config.featured_image
+	: {} ;
+// https://tools.ietf.org/html/rfc3986#section-4.2
+var useAbsolutePathReference = config.hasOwnProperty('absolute_path_reference')
+	? config.absolute_path_reference
+	: false;
+if (useAbsolutePathReference) {
+	imagesPath = absolute_path_reference_url(imagesPath);
+}
 if (!post_asset_folder) {
 	if (hexo.config.image_dir) {
 		imagesPath += hexo.config.image_dir;
@@ -22,6 +37,9 @@ hexo.extend.filter.register('before_post_render', function(data) {
 		// Use post asset folder
 		if (post_asset_folder) {
 			imagePrefix = data.permalink;
+			if (useAbsolutePathReference) {
+				imagePrefix = absolute_path_reference_url(imagePrefix);
+			}
 		}
 		// Check if the featured image path is an absolute URI
 		if (

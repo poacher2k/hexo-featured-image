@@ -55,6 +55,8 @@ For this plugin to work correctly, you must set `url` to your URL in `_config.ym
     url: http://0.0.0.0:4000/
     ...
 
+or enable `absolute_path_reference` in the options.
+
 ### post_asset_folder
 
 This plugin works without configuration if you are using absolute or relative URI's, [post asset folders](https://hexo.io/docs/asset-folders.html), or you are storing your images in `source/images`.
@@ -84,3 +86,14 @@ This plugin plays nicely with [hexo-generator-json-content](https://github.com/a
             thumbnail: true # if you want thumbnail to be added as well
         }
     }
+
+## Options
+Add or modify the following section to your root `_config.yml` file
+
+``` yaml
+featured_image:
+  absolute_path_reference: true
+```
+
+- **absolute_path_reference**: Make your featured_image URL relative to the root of the website (i.e. they will not contain `url`)
+  - default: false
