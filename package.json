@@ -17,8 +17,8 @@
 		"url": "https://github.com/poacher2k/hexo-featured-image.git"
 	},
 	"dependencies": {
-		"hexo-fs": "^0.2.2",
-		"hexo-front-matter": "^1.0.0"
+		"hexo-front-matter": "^1.0.0",
+		"hexo-fs": "^2.0.0"
 	},
 	"devDependencies": {}
 }
