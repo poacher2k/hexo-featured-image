@@ -1,7 +1,7 @@
 {
 	"name": "hexo-featured-image",
 	"description": "A plugin for the Hexo static site generator to add support for featured images in posts and json-content.",
-	"author": "Daniel Skogly (http://www.pnkt.no)",
+	"author": "Daniel Skogly (https://wishy.gift)",
 	"homepage": "https://github.com/poacher2k/hexo-featured-image",
 	"keywords": [
 		"hexo",
@@ -9,7 +9,7 @@
 		"image",
 		"plugin"
 	],
-	"version": "0.4.2",
+	"version": "0.4.3",
 	"main": "index",
 	"license": "MIT",
 	"repository": {
